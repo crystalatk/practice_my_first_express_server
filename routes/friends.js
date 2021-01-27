@@ -17,18 +17,29 @@ router.get('/', (req, res) => {
     res.send(htmlData);
 });
 
+// router.get('/:handle', (req, res) => {
+//     const { handle } = req.params;
+//     const friend = friendsArray.find((friend) => {
+//         if (friend.handle === handle) {
+//             return friend;
+//         } 
+//     });
+//     if (friend) {
+//         res.send(`<h1>Hi ${friend.name}!</h1>`);
+//     } else {
+//         res.send(`No friend with the handle: ${handle} was found. :(`)
+//     }
+// })
+
 router.get('/:handle', (req, res) => {
     const { handle } = req.params;
-    const friend = friendsArray.find((friend) => {
-        if (friend.handle === handle) {
-            return friend;
-        } 
-    });
+    const friend = friendsArray.find((friend) => friend.handle === handle);
     if (friend) {
         res.send(`<h1>Hi ${friend.name}!</h1>`);
     } else {
         res.send(`No friend with the handle: ${handle} was found. :(`)
     }
 })
+
 
 module.exports = router;
